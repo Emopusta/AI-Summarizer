@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { copy, linkIcon, loader, tick } from "../assets";
-import { useLazyGetSummaryQuery } from "../services/article";
+import { useLazyGetExtractQuery, useLazyGetSummaryQuery } from "../services/article";
 
 function Demo() {
-  const [article, setArticle] = useState({ url: "", summary: "" });
+  const [article, setArticle] = useState({ url: "", summary: "", title: "" });
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
+  const [getExtract] = useLazyGetExtractQuery();
   const [allArticles, setAllArticles] = useState([]);
   const [copied, setCopied] = useState("");
 
@@ -21,13 +22,13 @@ function Demo() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { data } = await getSummary({ articleUrl: article.url });
-
-    if (data?.summary) {
-      const newArticle = { ...article, summary: data.summary };
+    const extractedData = await getExtract({ articleUrl: article.url });
+    if (data?.summary && extractedData?.data?.title) {
+      const newArticle = { ...article, summary: data.summary, title: extractedData.data.title };
       const updatedAllArticles = [newArticle, ...allArticles];
       setArticle(newArticle);
       setAllArticles(updatedAllArticles);
-
+    
       localStorage.setItem("articles", JSON.stringify(updatedAllArticles));
     }
   };
@@ -83,7 +84,7 @@ function Demo() {
                 />
               </div>
               <p className="flex-1 font-satoshi text-blue-700 font-medium text-sm truncate">
-                {item.url}
+                {item.title}
               </p>
             </div>
           ))}
