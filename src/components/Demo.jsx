@@ -54,6 +54,7 @@ function Demo() {
           <input
             type="text"
             placeholder="Enter a title"
+            value={article.title}
             onChange={(e) => setArticle({ ...article, title: e.target.value })}
             required
             className="url_input peer"
