@@ -5,10 +5,10 @@ import { useLazyGetExtractQuery, useLazyGetSummaryQuery } from "../services/arti
 function Demo() {
   const [article, setArticle] = useState({ url: "", summary: "", title: "" });
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
-  const [getExtract] = useLazyGetExtractQuery();
   const [allArticles, setAllArticles] = useState([]);
   const [copied, setCopied] = useState("");
 
+  
   useEffect(() => {
     const articlesFromLocalStorage = JSON.parse(
       localStorage.getItem("articles")
@@ -22,9 +22,8 @@ function Demo() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { data } = await getSummary({ articleUrl: article.url });
-    const extractedData = await getExtract({ articleUrl: article.url });
-    if (data?.summary && extractedData?.data?.title) {
-      const newArticle = { ...article, summary: data.summary, title: extractedData.data.title };
+    if (data?.summary ) {
+      const newArticle = { ...article, summary: data.summary};
       const updatedAllArticles = [newArticle, ...allArticles];
       setArticle(newArticle);
       setAllArticles(updatedAllArticles);
@@ -51,6 +50,13 @@ function Demo() {
             src={linkIcon}
             alt="link-icon"
             className="absolute left-0 my-2 ml-3 w-5"
+          />
+          <input
+            type="text"
+            placeholder="Enter a title"
+            onChange={(e) => setArticle({ ...article, title: e.target.value })}
+            required
+            className="url_input peer"
           />
           <input
             type="url"
