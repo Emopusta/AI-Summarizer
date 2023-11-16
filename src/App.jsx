@@ -2,6 +2,7 @@ import Hero from "./components/Hero";
 import Demo from "./components/Demo";
 
 import "./App.css";
+import Switch from "./components/Switch";
 const App = () => {
   return (
     <div>
@@ -10,7 +11,7 @@ const App = () => {
       </div>
       <div className="app">
         <Hero/>
-        <Demo/>
+        <Switch/>
       </div>
     </div>
   );
