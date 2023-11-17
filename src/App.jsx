@@ -1,8 +1,6 @@
-import Hero from "./components/Hero";
-import Demo from "./components/Demo";
-
 import "./App.css";
 import Switch from "./components/Switch";
+import Header from "./components/Header";
 const App = () => {
   return (
     <div>
@@ -10,7 +8,7 @@ const App = () => {
         <div className="gradient"/>
       </div>
       <div className="app">
-        <Hero/>
+        <Header/>
         <Switch/>
       </div>
     </div>
