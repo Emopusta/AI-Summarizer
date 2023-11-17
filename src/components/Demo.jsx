@@ -52,14 +52,6 @@ function Demo() {
             className="absolute left-0 my-2 ml-3 w-5"
           />
           <input
-            type="text"
-            placeholder="Enter a title"
-            value={article.title}
-            onChange={(e) => setArticle({ ...article, title: e.target.value })}
-            required
-            className="url_input peer"
-          />
-          <input
             type="url"
             placeholder="Enter a URL"
             value={article.url}
@@ -67,6 +59,15 @@ function Demo() {
             required
             className="url_input peer"
           />
+          <input
+            type="text"
+            placeholder="Enter a title"
+            value={article.title}
+            onChange={(e) => setArticle({ ...article, title: e.target.value })}
+            required
+            className="url_input peer"
+          />
+          
           <button
             type="submit"
             className="submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700"
