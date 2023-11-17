@@ -9,17 +9,31 @@ export const articleApi = createApi({
     prepareHeaders: (headers) => {
         headers.set('X-RapidAPI-Key', rapidApiKey);
         headers.set('X-RapidAPI-Host', 'article-extractor-and-summarizer.p.rapidapi.com');
+        headers.set('Content-Type', 'application/json');
         return headers;
     }
   }),
   endpoints: (builder) => ({
     getSummary: builder.query({
-      query: (params) => `/summarize?url=${encodeURIComponent(params.articleUrl)}&length=3`,
+      query: (params) => ({
+        url:`/summarize?url=${encodeURIComponent(params.articleUrl)}&length=3`,
+        lang:"tr",
+      })
     }),
     getExtract: builder.query({
-        query: (params) => `/extract?url=${encodeURIComponent(params.articleUrl)}`
-    })
+        query: (params) => ({
+          url:`/extract?url=${encodeURIComponent(params.articleUrl)}`,
+          lang:"tr",
+      })
+    }),
+    postTextSummary: builder.mutation({
+      query: (text) => ({
+        url: '/summarize-text',
+        method: 'POST',
+        body: { text, lang:"tr" },
+      }),
+    }),
   }),
 });
 
-export const {useLazyGetSummaryQuery, useLazyGetExtractQuery} = articleApi;
+export const {useLazyGetSummaryQuery, useLazyGetExtractQuery, usePostTextSummaryMutation} = articleApi;
