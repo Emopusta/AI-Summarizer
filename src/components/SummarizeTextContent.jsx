@@ -47,7 +47,7 @@ const SummarizeTextContent = () => {
         >
           <input
             type="text"
-            placeholder="Enter a text"
+            placeholder="Yazı Giriniz"
             value={article.text}
             onChange={(e) => setArticle({ ...article, text: e.target.value })}
             required
@@ -55,7 +55,7 @@ const SummarizeTextContent = () => {
           />
           <input
             type="text"
-            placeholder="Enter a title"
+            placeholder="Başlık Giriniz"
             value={article.title}
             onChange={(e) => setArticle({ ...article, title: e.target.value })}
             required
@@ -66,7 +66,7 @@ const SummarizeTextContent = () => {
             type="submit"
             className="submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700"
           >
-            Send
+            Gönder
           </button>
         </form>
         {/* Browser URL History */}

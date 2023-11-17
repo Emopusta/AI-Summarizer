@@ -53,7 +53,7 @@ function SummarizeLinkContent() {
           />
           <input
             type="url"
-            placeholder="Enter a URL"
+            placeholder="URL Giriniz"
             value={article.url}
             onChange={(e) => setArticle({ ...article, url: e.target.value })}
             required
@@ -61,7 +61,7 @@ function SummarizeLinkContent() {
           />
           <input
             type="text"
-            placeholder="Enter a title"
+            placeholder="Başlık Giriniz"
             value={article.title}
             onChange={(e) => setArticle({ ...article, title: e.target.value })}
             required
@@ -72,7 +72,7 @@ function SummarizeLinkContent() {
             type="submit"
             className="submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700"
           >
-            Send
+            Gönder
           </button>
         </form>
         {/* Browser URL History */}

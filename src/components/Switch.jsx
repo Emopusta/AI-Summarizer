@@ -20,7 +20,7 @@ const Switch = () => {
   return (
     <div className="flex flex-col items-center">
       <button className={buttonClasses} onClick={handleClick}>
-        {isSummarizerLink ? "Click for Summarize Text" : "Click for Summarize Link"}
+        {isSummarizerLink ? "Yazı özetlemek için tıkla" : "Link özetlemek için tıkla"}
       </button>
       {isSummarizerLink ? <SummarizeLinkContent /> : <SummarizeTextContent/>}
     </div>
