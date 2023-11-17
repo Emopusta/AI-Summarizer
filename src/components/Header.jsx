@@ -5,11 +5,11 @@ function Header() {
       <nav className="flex justify-between items-center flex-row w-full mb-10 pt-3">
         <div className="flex flex-row items-center">
         <img src={logo} alt="sumz_logo" className="w-28 object-contain" />
-        <p className="font-satoshi text-3xl">SumEmopusta</p>
+        <p className="font-satoshi text-3xl">EmopSummarizer</p>
         </div>
         <button
           type="button"
-          onClick={() => window.open("https://github.com/Emopusta")}
+          onClick={() => window.open("https://github.com/Emopusta/AI-Summarizer")}
           className="black_btn"
         >
           Github
