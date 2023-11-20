@@ -19,12 +19,6 @@ export const articleApi = createApi({
         url:`/summarize?url=${encodeURIComponent(params.articleUrl)}&length=3&lang=tr`,
       })
     }),
-    getExtract: builder.query({
-        query: (params) => ({
-          url:`/extract?url=${encodeURIComponent(params.articleUrl)}`,
-          lang:"tr",
-      })
-    }),
     postTextSummary: builder.mutation({
       query: (text) => ({
         url: '/summarize-text',
