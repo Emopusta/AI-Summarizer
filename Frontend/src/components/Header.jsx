@@ -1,29 +1,42 @@
+import { Link } from "react-router-dom";
 import { logo } from "../assets";
 function Header() {
   return (
     <header className="w-full flex justify-center items-center flex-col">
       <nav className="flex justify-between items-center flex-row w-full mb-10 pt-3">
         <div className="flex flex-row items-center">
-        <img src={logo} alt="sumz_logo" className="w-28 object-contain" />
-        <p className="font-satoshi text-3xl">EmopSummarizer</p>
+          <img src={logo} alt="sumz_logo" className="w-28 object-contain" />
+          <Link to="/">
+            <p className="font-satoshi text-3xl ml-1">EmopSummarizer</p>
+          </Link>
         </div>
-        <button
-          type="button"
-          onClick={() => window.open("https://github.com/Emopusta/AI-Summarizer")}
-          className="black_btn"
-        >
-          Github
-        </button>
+        <div>
+        <Link to="/">
+            <button className="btn btn-ghost normal-case text-xl ml-5">
+              Home
+            </button>
+          </Link>
+          <Link to="/about">
+            <button className="btn btn-ghost normal-case text-xl ml-5">
+              About
+            </button>
+          </Link>
+          <Link to="/sign-in">
+            <button className="btn btn-ghost normal-case text-xl ml-5">
+              Sign In
+            </button>
+          </Link>
+          <button
+            type="button"
+            onClick={() =>
+              window.open("https://github.com/Emopusta/AI-Summarizer")
+            }
+            className="ml-5 black_btn"
+          >
+            Github
+          </button>
+        </div>
       </nav>
-
-      <h1 className="head_text">
-        <span className="orange_gradient">OpenAI GPT-4</span>
-        <br className="max-md:hidden" />{" "}
-       
-        Kullanarak herhangi bir şeyin özetini çıkar!
-      </h1>
-      <h2 className="desc">
-        İngilizce, Almanca, ... fark etmeden gpt-4 ile desteklenen herhangi bir dil ile verdiğiniz girdiler sonucu Türkçe çıktı alın.</h2>
     </header>
   );
 }
