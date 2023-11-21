@@ -1,5 +1,5 @@
 import "./App.css";
-import Switch from "./components/Switch";
+import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
       </div>
       <div className="app">
         <Header/>
-        <Switch/>
+        <Outlet/>
       </div>
     </div>
   );
