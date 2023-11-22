@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { logo } from "../assets";
+
 function Header() {
+  const { aisum_userInfo } = useSelector((state) => state.auth);
+  console.log(aisum_userInfo);
   return (
     <header className="w-full flex justify-center items-center flex-col">
       <nav className="flex justify-between items-center flex-row w-full mb-10 pt-3">
@@ -21,11 +25,20 @@ function Header() {
               About
             </button>
           </Link>
-          <Link to="/sign-in">
-            <button className="btn btn-ghost normal-case text-xl ml-5">
-              Sign In
+
+        {aisum_userInfo ? (
+          <Link to="/profile">
+             <button className="btn btn-ghost normal-case text-xl ml-5">
+             {aisum_userInfo.name}
             </button>
-          </Link>
+        </Link>
+        ): (<Link to="/sign-in">
+        <button className="btn btn-ghost normal-case text-xl ml-5">
+          Sign In
+        </button>
+      </Link>)}
+
+
           <button
             type="button"
             onClick={() =>
