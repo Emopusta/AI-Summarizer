@@ -52,7 +52,7 @@ const register = asyncHandler(async (req, res) => {
 });
 
 const logout = asyncHandler(async (req, res) => {
-  res.cookie("jwt", "", {
+  res.cookie("aisum_token", "", {
     httpOnly: true,
     expires: new Date(0),
   });

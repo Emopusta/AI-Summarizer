@@ -5,7 +5,7 @@ const generateAccessToken = (res, userId) => {
     expiresIn: "30d",
   });
 
-  res.cookie("jwt", token, {
+  res.cookie("aisum_token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV !== "development",
     sameSite: "strict",
