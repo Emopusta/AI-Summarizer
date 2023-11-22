@@ -16,6 +16,7 @@ import Home from "./pages/Home.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import About from "./pages/About.jsx";
 import Profile from "./pages/Profile.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,8 +24,10 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/sign-in" element={<SignIn />} />
-    <Route path="/profile" element={<Profile/>}></Route>
+      <Route element={<PrivateRoute/>}>
 
+    <Route path="/profile" element={<Profile/>}></Route>
+    </Route>
     </Route>
   )
 );
