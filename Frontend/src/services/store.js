@@ -5,27 +5,20 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { articleApi } from "./article";
 
-const nonPersistedReducers = {
-  [apiSlice.reducerPath]: apiSlice.reducer,
-  [articleApi.reducerPath]: articleApi.reducer,
-};
-
-const nonPersistedReducer = combineReducers(nonPersistedReducers);
-
 const rootReducer = combineReducers({
-  nonPersisted: nonPersistedReducer,
   auth: authReducer,
+  [apiSlice.reducerPath]: apiSlice.reducer,
+  [articleApi.reducerPath]: articleApi.reducer
 });
 
 const persistConfig = {
   key: "root",
   storage,
   version: 1,
-  whitelist: ["auth"], 
+  blacklist: ["apiSlice", "articleApi"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
