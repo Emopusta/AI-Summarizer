@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectMongoDb from "./config/mongoDb.js";
 import authRoutes from "./routes/authRoutes.js";
+import articleRoutes from "./routes/articleRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
@@ -24,7 +25,9 @@ app.get("/", (req, res) => {
   res.send("Welcome to Summarizer API...");
 });
 
-app.use("/api/auth", authRoutes)
+app.use("/api/auth", authRoutes);
+app.use("/api/article", articleRoutes);
+
 
 app.use(notFound);
 app.use(errorHandler);

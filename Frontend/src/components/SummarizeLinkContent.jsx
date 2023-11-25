@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import { copy, linkIcon, loader, tick } from "../assets";
 import { useLazyGetSummaryQuery } from "../services/article";
+import { useSummarizeMutation } from "../services/slices/articleApiSlice";
 
 function SummarizeLinkContent() {
   const [article, setArticle] = useState({ url: "", summary: "", title: "" });
-  const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
+  // const [getSummary,] = useLazyGetSummaryQuery();
   const [allArticles, setAllArticles] = useState([]);
   const [copied, setCopied] = useState("");
 
+const [getSum, { error, isLoading }] = useSummarizeMutation();
+console.log(error, isLoading);
   
   useEffect(() => {
     const articlesFromLocalStorage = JSON.parse(
@@ -21,7 +24,8 @@ function SummarizeLinkContent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data } = await getSummary({ articleUrl: article.url });
+    const articleUrl = article.url
+    const  data  = await getSum({articleUrl}).unwrap();
     if (data?.summary ) {
       const newArticle = { ...article, summary: data.summary};
       const updatedAllArticles = [newArticle, ...allArticles];
@@ -101,7 +105,7 @@ function SummarizeLinkContent() {
 
       {/* Display Results */}
       <div className="my-10 max-w-full flex justify-center items-center">
-        {isFetching ? (
+        {isLoading ? (
           <img src={loader} alt="loader" className="w-20 h-20 object-contain" />
         ) : error ? (
           <p className="font-inter font-bold text-black text-center">
