@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { copy, linkIcon, loader, tick } from "../assets";
+import { loader } from "../assets";
 import { usePostTextSummaryMutation } from "../services/article";
 
 const SummarizeTextContent = () => {
