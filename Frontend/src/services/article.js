@@ -29,4 +29,4 @@ export const articleApi = createApi({
   }),
 });
 
-export const {useLazyGetSummaryQuery, useLazyGetExtractQuery, usePostTextSummaryMutation} = articleApi;
+export const {useLazyGetSummaryQuery, usePostTextSummaryMutation} = articleApi;
