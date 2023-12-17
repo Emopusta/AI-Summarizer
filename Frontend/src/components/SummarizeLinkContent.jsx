@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
 import { copy, linkIcon, loader, tick } from "../assets";
-import { useLazyGetSummaryQuery } from "../services/article";
 import { useSummarizeMutation } from "../services/slices/articleApiSlice";
 
 function SummarizeLinkContent() {
   const [article, setArticle] = useState({ url: "", summary: "", title: "" });
-  // const [getSummary,] = useLazyGetSummaryQuery();
   const [allArticles, setAllArticles] = useState([]);
   const [copied, setCopied] = useState("");
 
 const [getSum, { error, isLoading }] = useSummarizeMutation();
-console.log(error, isLoading);
   
   useEffect(() => {
     const articlesFromLocalStorage = JSON.parse(

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { loader } from "../assets";
-import { usePostTextSummaryMutation } from "../services/article";
+import { useSummarizeMutation } from "../services/slices/articleApiSlice";
 
 const SummarizeTextContent = () => {
   const [article, setArticle] = useState({ text: "", summary: "", title: "" });
-  const [getTextSummary, { error, isFetching }] = usePostTextSummaryMutation();
+  const [getTextSummary, { error, isFetching }] = useSummarizeMutation();
   const [allArticles, setAllArticles] = useState([]);
 
   
